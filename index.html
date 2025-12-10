@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Granola - Hälsosam & Läcker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>🌾 Pure Granola</h1>
+            <ul>
+                <li><a href="#home">Hem</a></li>
+                <li><a href="#products">Produkter</a></li>
+                <li><a href="#about">Om oss</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Premium Handgjord Granola</h2>
+            <p>Gjord med ekologiska ingredienser, inga konstgjorda konserveringsmedel</p>
+            <button class="cta-btn" onclick="scrollTo('#products')">Handla Nu</button>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <h2>Våra Produkter</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/8B4513/FFFFFF?text=Classic+Mix" alt="Classic Granola">
+                <h3>Hallon/Choklad</h3>
+                <p>Havre, solrosfrön, sesamfrön, honung och torkade hallon</p>
+                <span class="price">60 :-</span>
+                <button class="buy-btn" onclick="addToCart('Hallon/Choklad', 60)">Lägg i Kundvagn</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/228B22/FFFFFF?text=Tropical+Blend" alt="Tropical Granola">
+                <h3>Jul Sensation</h3>
+                <p>Havre, solrosfrön, sesamfrön, honung och pepparkakor</p>
+                <span class="price">60 :-</span>
+                <button class="buy-btn" onclick="addToCart('Julblandning', 60)">Lägg i Kundvagn</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200/8B0000/FFFFFF?text=Chocolate+Crunch" alt="Chocolate Granola">
+                <h3>Chokladkross</h3>
+                <p>Mörk choklad, hasselnötter och vanilj</p>
+                <span class="price">60 :-</span>
+                <button class="buy-btn" onclick="addToCart('Chokladkross', 60)">Lägg i Kundvagn</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Varför Välja Vår Granola?</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>🌱 100% Ekologisk</h3>
+                <p>Gjord med certifierade ekologiska ingredienser</p>
+            </div>
+            <div class="feature">
+                <h3>🥜 Inga Konstgjorda Tillsatser</h3>
+                <p>Endast rena, naturliga ingredienser</p>
+            </div>
+            <div class="feature">
+                <h3>🍯 Lokalt Producerat</h3>
+                <p>Stödjer lokala bönder och producenter</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Kontakta Oss</h2>
+        <div class="contact-info">
+            <p>📧 nike.weiler@gmail.com</p>
+            <p>📞 0725075989</p>
+            <p>📍 Bökeberg Ridgymnasium</p>
+        </div>
+    </section>
+
+    <div id="cart" class="cart">
+        <h3>Kundvagn</h3>
+        <div id="cart-items"></div>
+        <div id="cart-total">Totalt: 0 SEK</div>
+        <button id="checkout-btn" onclick="checkout()">Beställ</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
