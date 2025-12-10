@@ -54,6 +54,14 @@ function hideCart() {
     document.getElementById('cart').classList.remove('open');
 }
 
+function copyToClipboard(text) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text);
+        return true;
+    }
+    return false;
+}
+
 function checkout() {
     if (cart.length === 0) {
         alert('Din kundvagn är tom!');
@@ -61,16 +69,16 @@ function checkout() {
     }
     
     const orderSummary = cart.map(item => `${item.name}: ${item.price} SEK`).join('\n');
-    const subject = 'Granola Beställning';
-    const body = `Beställningssammanfattning:\n${orderSummary}\n\nTotalt: ${total} SEK\n\nVänligen bekräfta denna beställning och ange leveransdetaljer.`;
+    const orderText = `Granola Beställning\n\nBeställningssammanfattning:\n${orderSummary}\n\nTotalt: ${total} SEK\n\nVänligen bekräfta denna beställning och ange leveransdetaljer.`;
     
-    // Try to open email client
-    try {
-        const emailBody = body.replace(/\n/g, '%0D%0A');
-        window.location.href = `mailto:nike.weiler@gmail.com?subject=${subject}&body=${emailBody}`;
-    } catch (error) {
-        // Fallback: show order details and email address
-        alert(`${body}\n\nSkicka denna beställning till: nike.weiler@gmail.com`);
+    // Try to copy to clipboard
+    const copied = copyToClipboard(orderText);
+    
+    if (copied) {
+        alert(`Beställningen har kopierats till urklipp!\n\nSkicka ett email till: nike.weiler@gmail.com\nKlistra in beställningen från urklipp (Ctrl+V)`);
+    } else {
+        // Fallback: show order details
+        alert(`${orderText}\n\n--- KOPIERA OVANSTÅENDE TEXT ---\nSkicka till: nike.weiler@gmail.com`);
     }
     
     cart = [];
