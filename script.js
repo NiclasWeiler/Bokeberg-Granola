@@ -60,11 +60,18 @@ function checkout() {
         return;
     }
     
-    const orderSummary = cart.map(item => `${item.name}: ${item.price} SEK`).join('%0D%0A');
+    const orderSummary = cart.map(item => `${item.name}: ${item.price} SEK`).join('\n');
     const subject = 'Granola Beställning';
-    const body = `Beställningssammanfattning:%0D%0A${orderSummary}%0D%0A%0D%0ATotalt: ${total} SEK%0D%0A%0D%0AVänligen bekräfta denna beställning och ange leveransdetaljer.`;
+    const body = `Beställningssammanfattning:\n${orderSummary}\n\nTotalt: ${total} SEK\n\nVänligen bekräfta denna beställning och ange leveransdetaljer.`;
     
-    window.location.href = `mailto:nike.weiler@gmail.com?subject=${subject}&body=${body}`;
+    // Try to open email client
+    try {
+        const emailBody = body.replace(/\n/g, '%0D%0A');
+        window.location.href = `mailto:nike.weiler@gmail.com?subject=${subject}&body=${emailBody}`;
+    } catch (error) {
+        // Fallback: show order details and email address
+        alert(`${body}\n\nSkicka denna beställning till: nike.weiler@gmail.com`);
+    }
     
     cart = [];
     updateCart();
